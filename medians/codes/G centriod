@@ -79,7 +79,7 @@ plt.grid() # minor
 plt.axis('equal')
 
 #if using termux
-plt.savefig('/sdcard/hima/gemoetry/figs/median1.pdf')
+plt.savefig('/sdcard/hima/gemoetry/figs/median2.pdf')
 #subprocess.run(shlex.split("termux-open ./figs/tri_sss.pdf"))
 #else
 plt.show()
