@@ -154,4 +154,4 @@ plt.ylabel('$y$')
 plt.legend(loc='best')
 plt.grid(True) # minor
 plt.axis('equal')
-plt.savefig("Angle2.jpg",bbox_inches='tight')
+plt.savefig("Angle3.jpg",bbox_inches='tight')
