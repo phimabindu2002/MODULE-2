@@ -325,9 +325,9 @@ plt.plot(x_CA[0,:],x_CA[1,:],label='$CA$')
 
 
 #Labeling the coordinates
-tri_coords = np.block([[A,B,C,D3,E3,F3,I,Ic]])
+tri_coords = np.block([[A,B,C,D3,E3,F3,O]])
 plt.scatter(tri_coords[0,:], tri_coords[1,:])
-vert_labels = ['A','B','C','D','E','F']
+vert_labels = ['A','B','C','D','E','F','O']
 for i, txt in enumerate(vert_labels):
     plt.annotate(txt, # this is the text
                  (tri_coords[0,i], tri_coords[1,i]), # this is the point to label
