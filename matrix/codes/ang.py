@@ -325,9 +325,9 @@ plt.plot(x_CF3[0,:],x_CF3[1,:],'--',label='$CF3$')
 
 
 #Labeling the coordinates
-tri_coords = np.block([[A,B,C,D3,E3,F3,I,Ic]])
+tri_coords = np.block([[A,B,C,D3,E3,F3]])
 plt.scatter(tri_coords[0,:], tri_coords[1,:])
-vert_labels = ['A','B','C','D3','E3','F3','I','Ic']
+vert_labels = ['A','B','C','D3','E3','F3']
 for i, txt in enumerate(vert_labels):
     plt.annotate(txt, # this is the text
                  (tri_coords[0,i], tri_coords[1,i]), # this is the point to label
