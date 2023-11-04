@@ -341,7 +341,7 @@ plt.grid() # minor
 plt.axis('equal')
 
 #if using termux
-plt.savefig('incentre.png')
+plt.savefig('circ.jpg')
 #subprocess.run(shlex.split("termux-open ./figs/tri_sss.pdf"))
 #else
 plt.show()
