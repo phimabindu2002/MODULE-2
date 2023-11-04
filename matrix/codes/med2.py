@@ -313,21 +313,21 @@ plt.plot(x_BE[0,:],x_BE[1,:],label='$BE$')
 plt.plot(x_CF[0,:],x_CF[1,:],label='$CF$')
 #plt.plot(x_OA[0,:],x_OA[1,:],label='$OA$')
 #plt.plot(x_IF3[0,:],x_IF3[1,:],label='$IF3$')
-#plt.plot(x_AD3[0,:],x_AD3[1,:],'--',label='$AD3$')
-#plt.plot(x_BE3[0,:],x_BE3[1,:],'--',label='$BE3$')
-#plt.plot(x_CF3[0,:],x_CF3[1,:],'--',label='$CF3$')
+plt.plot(x_AD3[0,:],x_AD3[1,:],'--',label='$AD3$')
+plt.plot(x_BE3[0,:],x_BE3[1,:],'--',label='$BE3$')
+plt.plot(x_CF3[0,:],x_CF3[1,:],'--',label='$CF3$')
 
 
 #Plotting the circumcircle
 #plt.plot(x_ccirc[0,:],x_ccirc[1,:],label='$circumcircle$')
-plt.plot(x_icirc[0,:],x_icirc[1,:],label='$incircle$')
+#plt.plot(x_icirc[0,:],x_icirc[1,:],label='$incircle$')
 
 
 
 #Labeling the coordinates
-tri_coords = np.block([[A,B,C,D3,E3,F3,I,Ic]])
+tri_coords = np.block([[A,B,C,D,E,F]])
 plt.scatter(tri_coords[0,:], tri_coords[1,:])
-vert_labels = ['A','B','C','D3','E3','F3','I','Ic']
+vert_labels = ['A','B','C','D','E','F']
 for i, txt in enumerate(vert_labels):
     plt.annotate(txt, # this is the text
                  (tri_coords[0,i], tri_coords[1,i]), # this is the point to label
