@@ -1,0 +1,356 @@
+\documentclass[11pt]{book}
+\usepackage{gvv-book}
+\usepackage{gvv}
+\usepackage[sectionbib,authoryear]{natbib}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\makeindex
+
+\begin{document}
+\frontmatter
+\tableofcontents
+\setcounter{page}{1}
+\mainmatter
+\chapter{Triangle}
+Consider a triangle with vertices
+\begin{align}
+\label{eq:tri-pts}
+\vec{A}=\myvec{1 \\ 3},\,
+\vec{B}=\myvec{-3\\0},\,
+	\vec{c}=\myvec{0\\4},\,
+\end{align}
+
+\section{Vectors}
+\section{Median}
+\section{Altitude}
+\section{Perpendicular Bisector}
+\section{Angular Bisector}
+\section{Matrix}
+
+The matrix of the veritices of the triangle is defined as
+		\begin{align}
+			\vec{P} &= \myvec{\vec{A} & \vec{B} &\vec{C}} \\
+            &=\myvec{1 & -3 & 0 \\ 3 & 0 & 4}
+		\end{align}
+\begin{figure}[H]
+    \centering
+    \includegraphics{/sdcard/hima/geometry/figs/vect1.jpg}
+    \caption{$\triangle$ ABC}
+    \label{fig:mat_vec1}
+\end{figure}
+\subsection{Vectors}
+
+
+\begin{enumerate}[label=\thesubsection.\arabic*.,ref=\thesubsection.\theenumi]
+\numberwithin{equation}{enumi}
+%Question 1.6.1.1
+\item Obtain the direction matrix of the sides of $\triangle ABC$ defined as 
+\begin{align}
+\vec{M} = 	\myvec{\vec{A}-\vec{B} & \vec{B}-\vec{C} & \vec{C}-\vec{A}}
+\end{align}
+\\
+\solution 
+\begin{align}
+\vec{M} &= \myvec{\vec{A}-\vec{B} & \vec{B}-\vec{C} & \vec{C}-\vec{A}} \\
+	&= \myvec{\vec{A} & \vec{B} &\vec{C}} \myvec{1 & 0 & -1 \\ -1 & 1 & 0 \\ 0 & -1 & 1} \\
+ &=\myvec{1 & -3 & 0 \\ 3 & 0 & 4}\myvec{1 & 0 & -1 \\ -1 & 1 & 0 \\ 0 & -1 & 1} 
+ \end{align}
+ Using Matrix multiplication
+ \begin{align}
+ \vec{M} &=\myvec{4 & -3 & -1 \\3 & -4 & 1}
+\end{align}
+where the second matrix above is known as a {\em circulant} matrix.  Note that the 2nd and 3rd row of the above matrix are circular shifts of the 1st row.
+%Question 1.6.1.2
+\item Obtain the normal matrix  of the sides of $\triangle ABC$ \\
+\solution Considering the roation matrix
+\begin{align}
+\vec{R}  = \myvec{0 & -1 \\ 1 & 0},
+\end{align}
+the normal matrix is obtained as
+\begin{align}
+\vec{N} &= \vec{R}\vec{M}  \\
+&=\myvec{0 & -1 \\ 1 & 0}\myvec{4 & -3 & -1 \\ 3 & -4 & 1} 
+\end{align}
+Using matrix multiplication 
+\begin{align}
+   \vec{N} &= \myvec{-3 & 4 & -1 \\ 4 & -3 & -1}
+\end{align}
+%Question 1.6.1.3
+\item Obtain $a, b, c$. \\
+\solution The sides vector is obtained as
+\begin{align}
+\vec{d} &= \sqrt{\text{diag}(\vec{M}^{\top}\vec{M})}\\
+\vec{M}^{\top}\vec{M} &= \myvec{4 & 3 \\ -3 &-4 \\ -1 &1}\myvec{4 & -3 & -1 \\ 3 & -4 & 1}
+\end{align} 
+Using matrix multiplication 
+\begin{align}
+    \vec{M} &= \myvec{ 25 & -24 & -1 \\ -24 & 25 & -1 \\ -1 & -1 & 2} \\
+    \vec{d} &= \sqrt{\text{diag}\brak{\myvec{ 25 & -24 & -1 \\ -24 & 25 & -1 \\ -1 & -1 & 2}}} \\
+    &= \myvec{ 0 & \sqrt{3} & \sqrt{49}} = \myvec{0 & \sqrt{3} & 7}
+\end{align}
+
+%Question 1.6.1.4
+\item Obtain the constant terms in the equations of the sides of the triangle. \\
+\solution The constants for the lines can be expressed in vector form as
+\begin{align}
+\vec{c} &= \text{diag}\cbrak{\brak{\vec{N}^{\top}\vec{P}}}  \\
+\vec{N}^{\top}\vec{P} &= \myvec{-3&4 \\ 4&-3 \\ -1 &-1}\myvec{1 & -3 & 0 \\ 3 & 0 & 4} \\
+\end{align}
+Using matrix multiplication
+\begin{align}
+    &=\myvec{ 9 & 9 & 16 \\ -5 & -12 & -12 \\ 4 & 3 & -4 } \\
+    \vec{c} &= \text{diag}\brak{ \myvec{ 9 & 9 & 16 \\ -5 & -12 & -12 \\ -4 & 3 & -4 }} \\
+    &= \myvec{ 21 & 5 & -1}
+\end{align}
+\end{enumerate}
+
+
+\subsection{Median}
+
+
+\begin{enumerate}[label=\thesubsection.\arabic*.,ref=\thesubsection.\theenumi]
+\numberwithin{equation}{enumi}
+%Question 1.6.2.1
+\item Obtain the mid point matrix for the sides of the triangle \\
+\solution
+\begin{align}
+\myvec{\vec{D} & \vec{E} &\vec{F}} &= \frac{1}{2}\myvec{\vec{A} & \vec{B} &\vec{C}}
+\myvec{0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0} \\
+&= \frac{1}{2}\myvec{1 & -3 & 0 \\ 3 & 0 & 4}\myvec{0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0}
+\end{align}
+Using matrix multiplication 
+\begin{align}
+\myvec{\vec{D} & \vec{E} &\vec{F}} &= \myvec{\frac{-3}{2} & \frac{1}{2} & -1 \\2 & \frac{7}{2} & \frac{3}{2}}
+\end{align}
+\begin{figure}[H]
+    \centering
+    \includegraphics{/sdcard/hima/geometry/figs/med1.jpg}
+    \caption{mid-points}
+    \label{fig:mat_med1}
+\end{figure}
+%Question 1.6.2.2
+\item Obtain the median direction matrix. \\
+\solution The median direction matrix is given by 
+\begin{align}
+			\vec{M}_1 &= \myvec{\vec{A}-\vec{D} & \vec{B}-\vec{E} & \vec{C}-\vec{F}}
+			\\
+			&= 
+			  \myvec{
+				  \vec{A}-\frac{\vec{B}+\vec{C}}{2} &
+			  \vec{B}-\frac{\vec{C}+\vec{A}}{2} &
+			  \vec{C}-\frac{\vec{A}+\vec{B}}{2}} 
+			  \\
+			  &= \myvec{\vec{A} & \vec{B} &\vec{C}}
+			  \myvec{
+				  1 & -\frac{1}{2} & -\frac{1}{2}
+				  \\
+				  -\frac{1}{2} & 1 & -\frac{1}{2}
+				  \\
+				  -\frac{1}{2} & -\frac{1}{2} & 1
+				  } 
+      \\
+      &= \myvec{1 & -3 & 0 \\ 3 & 0 & 4}\myvec{
+				  1 & -\frac{1}{2} & -\frac{1}{2}
+				  \\
+				  -\frac{1}{2} & 1 & -\frac{1}{2}
+				  \\
+				  -\frac{1}{2} & -\frac{1}{2} & 1
+				  } 
+		\end{align}
+  Using matrix multiplication 
+  \begin{align}
+   \vec{M}_1 &=   \myvec{\frac{5}{2} & \frac{-7}{2} & 1 \\ 1 & \frac{-7}{2} & \frac{5}{2}}
+  \end{align}
+%Question 1.6.2.3
+\item Obtain the median normal matrix. \\
+\solution Considering the roation matrix
+\begin{align}
+\vec{R}  = \myvec{0 & -1 \\ 1 & 0},
+\end{align}
+the normal matrix is obtained as
+\begin{align}
+\vec{N}_1 &= \vec{R}\vec{M}_1  \\
+&=\myvec{0 & -1 \\ 1 & 0} \myvec{\frac{5}{2} & \frac{-7}{2} & 1\\ 1 & \frac{-7}{2} & \frac{5}{2}} \\
+\vec{N}_1 &=  \myvec{ -1 & \frac{7}{2} & \frac{-5}{2} \\ \frac{5}{2} & \frac{-7}{2} & 1 }
+\end{align}
+%Question 1.6.2.4
+\item Obtian the median equation constants. \\
+\begin{align}
+\vec{c}_1 &= \text{diag}\brak{\brak{\vec{N}_1^{\top}\myvec{\vec{D} & \vec{E} & \vec{F} }}}  \\
+\vec{N}_1^{\top}\myvec{\vec{D} & \vec{E} & \vec{F} } &= \myvec{-1 &\frac{5}{2} \\ \frac{7}{2}&\frac{-7}{2} \\ \frac{-5}{2} &1}\myvec{\frac{-3}{2} & \frac{1}{2} & -1 \\ 2 & \frac{7}{2} & \frac{3}{2}} \\
+\end{align}
+Using matrix multiplication
+\begin{align}
+    &=\myvec{ \frac{13}{2} & \frac{33}{4} & \frac{19}{4} \\ \frac{-49}{4} & \frac{-21}{4} & \frac{-35}{4} \\ \frac{23}{4} & \frac{9}{4} & 4 } \\
+    \vec{c}_1 &= \text{diag}\brak{ \myvec{ \frac{13}{2} & \frac{33}{4} & \frac{19}{4} \\ \frac{-49}{4} & \frac{-21}{4} & \frac{-35}{4} \\ \frac{23}{4} & \frac{9}{4} & 4 }} \\
+    \vec{c}_1 &= \myvec{ \frac{-17}{2} & \frac{49}{4} & 15}
+\end{align}
+%Question 1.6.2.5
+\item Obtain the centroid by finding the intersection of the medians.\\
+\solution
+ \begin{align}
+\augvec{1}{1}{\vec{N}_1^{\top}& \vec{c}^{\top}}  &= \augvec{2}{1}{ -1 & \frac{5}{2} & \frac{-17}{2} \\ \frac{7}{2} & \frac{-7}{2} & \frac{49}{4} \\ \frac{-5}{2} & 1 & 15} 
+\end{align}
+Using Gauss-Elimination method:
+\begin{align}
+\augvec{2}{1}{ -1 & \frac{5}{2} & \frac{-17}{2} \\ \frac{7}{2} & \frac{-7}{2} & \frac{49}{4} \\ \frac{-5}{2} & 1 & 15} 
+\xleftrightarrow[]{R_2 \leftarrow R_2-R_1}
+\augvec{2}{1}{ -1 & \frac{5}{2} & \frac{-17}{2} \\ \frac{9}{2} & \frac{-9}{2} & \frac{83}{4} \\ \frac{-5}{2} & 1 & 15} 
+\\
+\xleftrightarrow[]{R_3\leftarrow R_3+2R_1}
+\augvec{2}{1}{ -1 & \frac{5}{2} & \frac{-17}{2} \\ \frac{9}{2} & \frac{-9}{2} & \frac{83}{4} \\ \frac{-9}{2} & 6 & -2} 
+\\
+\xleftrightarrow[]{R_2\leftarrow \frac{1}{9}R_2}
+\augvec{2}{1}{ -1 & \frac{5}{2} & \frac{-17}{2} \\ \frac{1}{2} & \frac{-1}{2} & \frac{83}{36} \\ \frac{-9}{2} & 6 & -2}
+\\
+\xleftrightarrow[]{R_1\leftarrow R_1 +\frac{5}{2}R_2}
+\augvec{2}{1}{ \frac{1}{4} & \frac{5}{4} & \frac{-197}{72} \\ \frac{1}{2} & \frac{-1}{2} & \frac{83}{36} \\ \frac{-9}{2} & 6 & -2}
+\\
+\xleftrightarrow[]{R_3\leftarrow R_3+9R_2}
+\augvec{2}{1}{ \frac{1}{4} & \frac{5}{4} & \frac{-197}{72} \\ \frac{1}{2} & \frac{-1}{2} & \frac{83}{36} \\ 0 & \frac{3}{2} & \frac{77}{3}} \\
+ \text{Therefore } \vec{G}=\myvec { \frac{-197}{72} \\ \frac{-83}{36} \\ \frac{77}{3}}
+\end{align} 
+\begin{figure}[H]
+    \centering
+    \includegraphics{/sdcard/hima/geometry/figs/med2.jpg}
+    \caption{centroid of triangle ABC}
+    \label{fig:mat_med2}
+\end{figure}
+\end{enumerate}
+
+
+\subsection{Altitude}
+
+  
+\begin{enumerate}[label=\thesubsection.\arabic*.,ref=\thesubsection.\theenumi]
+\numberwithin{equation}{enumi}
+%Question 1.6.3.1
+\item Find the normal matrix for the altitudes \\
+\solution  The desired matrix is 
+\begin{align}
+\vec{M}_2 &= \myvec{\vec{B}-\vec{C} & \vec{C}-\vec{A} & \vec{A}-\vec{B} }
+\\
+&= 
+\myvec{\vec{A} & \vec{B} &\vec{C}}
+\myvec{ 0 & -1 & 1 \\ 1 & 0 & -1 \\ -1 & 1 & 0} \\
+&= 
+\myvec{1 & -3 & 0 \\ 3 & 0 & 4}
+\myvec{ 0 & -1 & 1 \\ 1 & 0 & -1 \\ -1 & 1 & 0}
+\end{align}
+Using Matrix multiplication 
+\begin{align}
+   \vec{M}_2 &=\myvec{-3 & -1 & 4 \\ -4 & 1 & 3}
+\end{align}
+%Question 1.6.3.2
+\item Find the constants vector for the altitudes. \\
+\solution The desired vector is 
+\begin{align}
+\vec{c}_2 &= \text{diag}\cbrak{\brak{\vec{M}^{\top}\vec{P}}} \\
+\vec{M}^{\top}\vec{P} &= \myvec{-3&-4 \\ -1&1 \\ 4 &3}\myvec{1 & -3 & 0 \\ 3 & 0 & 4} \\
+\end{align}
+Using matrix multiplication
+\begin{align}
+ \vec{M}^{\top}\vec{P}    &=\myvec{ -15 & 9 & -16 \\ 2 & 3 & 4 \\ 13 & -12 & 12 } \\
+    \vec{c}_2 &= \text{diag}\brak{ \myvec{ -15 & 9 & -16 \\ 2 & 3 & 4 \\ 13 & -12 & 12 } } \\
+ \vec{c}_2   &= \myvec{ -16 & 9 & 12}
+\end{align}
+\end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics{/sdcard/hima/geometry/figs/alt.jpg}
+    \caption{Ortho centre of $\triangle$ ABC}
+    \label{fig:mat_alt1}
+\end{figure}
+
+
+\subsection{Perpendicular Bisector}
+
+  
+\begin{enumerate}[label=\thesubsection.\arabic*.,ref=\thesubsection.\theenumi]
+\numberwithin{equation}{enumi}
+%Question 1.6.4.1
+\item Find the normal matrix for the perpendicular bisectors \\
+\solution The normal matrix is $\vec{M}_2$
+\begin{align}
+       \vec{M}_2 &=\myvec{-3 & -1 & 4 \\ -4 & 1 & 3}
+\end{align}
+\begin{figure}[H]
+    \centering
+    \includegraphics{/sdcard/hima/geometry/figs/prep1.jpg}
+    \caption{plot of perpendicular bisectors}
+    \label{fig:mat_perp1}
+\end{figure}
+%Question 1.6.4.2
+\item Find the constants vector for the perpendicular bisectors. \\
+\solution The desired vector is 
+\begin{align}
+\vec{c}_3 = \text{diag}\cbrak{\vec{M}_2^{\top}\myvec{\vec{D} & \vec{E} &\vec{F}}}
+\end{align}
+\solution
+\begin{align}
+\vec{c}_3 &= \text{diag}\cbrak{\vec{M}_2^{\top}\myvec{\vec{D} & \vec{E} &\vec{F}}} \\
+\vec{M}_2^{\top}\myvec{\vec{D} & \vec{E} &\vec{F}} &= \myvec{-3&-4 \\ -1&1 \\ 4 &3}\myvec{\frac{-3}{2} & \frac{1}{2} & -1 \\ 2 & \frac{7}{2}  & \frac{3}{2} } \\
+\end{align}
+Using matrix multiplication
+\begin{align}
+ \vec{M}_2^{\top}\myvec{\vec{D} & \vec{E} &\vec{F}} &=\myvec{ 0 & \frac{7}{2} \\ \frac{-7}{2} & 0 } \\
+    \vec{c}_3 &= \text{diag}\brak{ \myvec{ 0 & \frac{7}{2} \\ \frac{-7}{2} & 0  } } \\
+ \vec{c}_3   &= \myvec{ \frac{-7}{2} &  0}
+\end{align}
+\begin{figure}[H]
+    \centering
+    \includegraphics{/sdcard/hima/geometry/figs/circ.jpg}
+    \caption{circumcentre and circumcircle of $\triangle$ ABC}
+    \label{fig:mat_perp2}
+\end{figure}
+\end{enumerate}
+
+
+\subsection{Angle Bisector}
+
+
+\begin{enumerate}[label=\thesubsection.\arabic*.,ref=\thesubsection.\theenumi]
+\numberwithin{equation}{enumi}
+%Question 1.6.5.1
+\item Find the points of contact. \\ 
+\solution The points of contact are given by 
+\begin{align}
+\myvec{			\frac{n\vec{A}+p\vec{C}}{n+p}
+&
+\frac{p\vec{B}+m\vec{A}}{p+m}
+&
+\frac{m\vec{C}+n\vec{B}}{m+n}
+}
+= 	\myvec{\vec{A} & \vec{B} &\vec{C}}\myvec{\frac{n}{b} & \frac{m}{c} & 0\\0 & \frac{p}{c} & \frac{n}{a} \\\frac{p}{b} & 0 & \frac{m}{a}}
+\end{align}
+\begin{align}
+    \myvec{\vec{p} & \vec{m} & \vec{n} } &=\frac{1}{2} \myvec{\vec{a} & \vec{b} & \vec{c}} \myvec{ -1 & 1 & 1 \\1 & -1 & 1 \\1 & 1 & -1 } \\
+   &= \frac{1}{2}\myvec{ 5&  5 & \sqrt{2} }\myvec{ -1 & 1 & 1 \\1 & -1 & 1 \\1 & 1 & -1 }  \\
+   &= \frac{1}{2}\myvec{ 5&  5 & 1.414 }\myvec{ -1 & 1 & 1 \\1 & -1 & 1 \\1 & 1 & -1 }
+\end{align}
+Using matrix multiplication 
+\begin{align}
+        \myvec{\vec{p} & \vec{m} & \vec{n} } &= \myvec{  1.414& 1.414 & 8.586 }   \\
+\myvec{\vec{A} & \vec{B} &\vec{C}}\myvec{\frac{n}{b} & \frac{m}{c} & 0\\0 & \frac{p}{c} & \frac{n}{a} \\\frac{p}{b} & 0 & \frac{m}{a}} 
+  &= \myvec{1 & -3 & 0 \\ 3 & 0 & 4} \myvec{\frac{8.586}{5} & \frac{1.414}{\sqrt{2}} & 0\\0 & \frac{1.414}{\sqrt{2}} & \frac{8.586}{5} \\\frac{1.414}{5} & 0 & \frac{1.414}{5}}
+\end{align}
+Using matrix multiplication We get the points of contact 
+\begin{align}
+    &= \myvec{ 1.8 & -2 & -5.4 \\ 6.2 & 3 & 0.8 }
+\end{align}
+\begin{figure}[H]
+    \centering
+    \includegraphics{/sdcard/hima/geometry/figs/ang.jpg}
+    \caption{Contact points of incircle of $triangle$ ABC}
+    \label{fig:mat_ang1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics{/sdcard/hima/geometry/figs/ang2.jpg}
+    \caption{Incircle and Incentre of $\triangle$ ABC }
+    \label{fig:mat_ang2}
+\end{figure}
+\end{enumerate}
+
+
+\end{document}
