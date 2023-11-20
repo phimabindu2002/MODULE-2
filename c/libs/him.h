@@ -1,7 +1,3 @@
-//Functions created by
-// G V V Sharma
-// October 27, 2023
-
 //Function declaration
 double **createMat(int m,int n);//create m x n matrix array
 void printMat(double **p,int m,int n);//print matrix
