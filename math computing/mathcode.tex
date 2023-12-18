@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{biblatex}
+\usepackage{tikz}
+\usepackage{refstyle}
+\usepackage{mathabx}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{graphicx} 
+\usepackage{enumitem}
+\usepackage{kpfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\myaugvec}[2]{\ensuremath{\begin{amatrix}{#1}#2\end{amatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+
+\begin{document}
+\title{\textbf{MATH-COMPUTING}}
+\maketitle
+\begin{enumerate}
+    \item \textbf{Question(MATH-12.10.5.17):}
+    Let $\vec{a}$ and $\vec{b}$ be two unit vectors and $\theta$ is the angle between them. Then $\vec{a}$+$\vec{b}$ is a unit vector.
+
+ \textbf{solution:}
+  As given two vectors a and b are two unit vectors and $\theta$ is the angle between them,   
+  then, $\mydet{a}$ = $\mydet{b}$ = $1$\\
+   Now, (a +b) is a unit vector if
+ $\mydet{a + b}$= $1$\\
+   $(a+b)^2$ = $(a +b).(a + b)$ = $1$\\
+$a^2 + ab +ba +b^2$ = $1$\\
+$1^2 + 1^2 +2ab$ = $1$\\
+ $ab$ = $\frac{-1}{2}$\\
+$\mydet{a}\mydet{b} \cos\theta$ = $\frac{-1}{2}$\\
+$\cos\theta$ = $\frac{-1}{2}$\\
+$\theta$ = $\cos\frac{-1}{2}$\\
+ $\theta$ = $\frac{2\pi}{3}$\\
+  \end{enumerate}
+\end{document}
