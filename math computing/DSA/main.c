@@ -10,9 +10,8 @@ int  main()
 avyuh *a,*b,*c; //lists a,b,c
 double x1, y1, x2, y2, norm;
 int m =2, n=1;
-double theta1 = M_PI;
-double theta2 = M_PI / 3;
-
+double theta2 = M_PI/3;
+double theta1 = theta2+(2*M_PI/3);
     x1 = cos(theta1);
     y1 = sin(theta1);
     x2 = cos(theta2);
