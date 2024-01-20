@@ -68,4 +68,3 @@ plt.axis('equal')
 plt.legend()
 plt.savefig("python_plot.png")
 plt.show()
-
