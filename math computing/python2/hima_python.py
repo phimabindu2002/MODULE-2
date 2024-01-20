@@ -9,8 +9,8 @@ from line.funcs import *
 from triangle.funcs import *
 from conics.funcs import circ_gen
 
-theta1 = math.pi
 theta2 = math.pi/3
+theta1 = theta2+(2*math.pi/3)
 
 x1, y1 = round(np.cos(theta1),3), round(np.sin(theta1),3)
 x2, y2 = round(np.cos(theta2),3), round(np.sin(theta2),3)
