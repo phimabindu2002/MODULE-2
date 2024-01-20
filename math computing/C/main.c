@@ -3,8 +3,9 @@
 #include <stdlib.h>
 #include"libs/matfun.h"
 int main() {
-    double theta1 = M_PI;
-    double theta2 = M_PI / 3;
+
+    double theta2 = M_PI/3;
+    double theta1 = theta2+(2*M_PI/3);
     
     double x1 = cos(theta1);
     double y1 = sin(theta1);
@@ -30,4 +31,3 @@ int main() {
     printf("||a+b||= %lf\n",norm);
     return 0;
 }
-
